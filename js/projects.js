@@ -3,7 +3,7 @@ $(document).ready(function(){
 });
 
 function load(page){
-    var q= $("#q").val();
+    var q= $("#proy").val();
     $("#loader").fadeIn('slow');
     $.ajax({
         url:'./ajax/search_project.php?action=ajax&page='+page+'&q='+q,
@@ -17,80 +17,75 @@ function load(page){
         }
     })
 }
-
-
-
 function eliminar (id)
 {
-var q= $("#q").val();
-if (confirm("Realmente deseas eliminar la categoría")){	
-$.ajax({
-type: "GET",
-url: "./ajax/search_project.php",
-data: "id="+id,"q":q,
- beforeSend: function(objeto){
-    $("#resultados").html("Mensaje: Cargando...");
-  },
-success: function(datos){
-$("#resultados").html(datos);
-load(1);
-}
+  var q= $("#proy").val();
+  if (confirm("¿Realmente deseas eliminar el proyecto?"))
+  {
+    $.ajax
+    ({
+      type: "GET",
+      url: "./ajax/search_project.php",
+      data: "id="+id,"q":q,
+      beforeSend: function(objeto){
+        $("#resultados").html("Mensaje: Cargando...");
+      },
+      success: function(datos){
+        $("#resultados").html(datos);
+        load(1);
+      }
     });
+  }
 }
-}
-
-
-
 $( "#save_project" ).submit(function( event ) {
-$('#save_data').attr("disabled", true);
-
-var parametros = $(this).serialize();
-$.ajax({
+  $('#save_data').attr("disabled", true);
+  var parametros = $(this).serialize();
+  $.ajax({
     type: "POST",
     url: "ajax/new_project.php",
     data: parametros,
-     beforeSend: function(objeto){
-        $("#resultados_ajax").html("Mensaje: Cargando...");
-      },
+    beforeSend: function(objeto){
+      $("#resultados_ajax").html("Mensaje: Cargando...");
+    },
     success: function(datos){
-    $("#resultados_ajax").html(datos);
-    $('#guardar_datos').attr("disabled", false);
-    load(1);
-  }
-});
-event.preventDefault();
+      $("#resultados_ajax").html(datos);
+      $('#guardar_datos').attr("disabled", false);
+      load(1);
+    }
+  });
+  event.preventDefault();
 })
-
-$( "#editar_categoria" ).submit(function( event ) {
-$('#actualizar_datos').attr("disabled", true);
-
-var parametros = $(this).serialize();
-$.ajax({
+$( "#edit_project" ).submit(function( event )
+{
+  $('#update_data').attr("disabled", true);
+  var parametros = $(this).serialize();
+  $.ajax
+  ({
     type: "POST",
-    url: "ajax/editar_categoria.php",
+    url: "ajax/edit_project.php",
     data: parametros,
-     beforeSend: function(objeto){
-        $("#resultados_ajax2").html("Mensaje: Cargando...");
-      },
-    success: function(datos){
-    $("#resultados_ajax2").html(datos);
-    $('#actualizar_datos').attr("disabled", false);
-    load(1);
-  }
-});
-event.preventDefault();
+    beforeSend: function(objeto){
+      $("#resultados_ajax2").html("Mensaje: Cargando...");
+    },
+    success: function(datos)
+    {
+      $("#resultados_ajax2").html(datos);
+      $('#update_data').attr("disabled", false);
+      load(1);
+    }
+  });
+  event.preventDefault();
 })
-
-
-$('#myModal2').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget) // Button that triggered the modal
-var nombre = button.data('nombre') 
-var descripcion = button.data('descripcion') 
-var id = button.data('id') 
-var modal = $(this)
-modal.find('.modal-body #mod_nombre').val(nombre)
-modal.find('.modal-body #mod_descripcion').val(descripcion) 
-modal.find('.modal-body #mod_id').val(id)
+$('#myModal2').on('show.bs.modal', function (event) 
+{
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var nombre = button.data('nombre') 
+  var descripcion = button.data('descripcion') 
+  var id = button.data('id') 
+  var modal = $(this)
+  modal.find('.modal-body #mod_nombre').val(nombre)
+  modal.find('.modal-body #mod_descripcion').val(descripcion) 
+  modal.find('.modal-body #mod_id').val(id)
 })
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2019 a las 01:18:07
+-- Tiempo de generación: 06-04-2019 a las 19:55:49
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -107,6 +107,13 @@ CREATE TABLE `projects` (
   `id_task` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `projects`
+--
+
+INSERT INTO `projects` (`id_project`, `name_project`, `date_added`, `date_end`, `des_proj`, `user_id`, `id_task`) VALUES
+(1, 'Test', '2019-04-05 00:50:04', '2019-04-05 00:50:04', 'Test', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -121,6 +128,13 @@ CREATE TABLE `tasks` (
   `id_project` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tasks`
+--
+
+INSERT INTO `tasks` (`id_task`, `name_task`, `date_added`, `date_end`, `id_project`, `user_id`) VALUES
+(1, 'Test', '2019-04-05 00:50:04', '2019-04-05 00:50:04', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +232,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

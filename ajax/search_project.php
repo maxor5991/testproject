@@ -4,7 +4,7 @@ require_once ("../config/db.php");
 require_once ("../config/conexion.php");
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if (isset($_GET['id'])){
-	$id_categoria=intval($_GET['id']);
+	$id_project=intval($_GET['id']);
 	$query=mysqli_query($con, "select * from tasks where id_project='".$id_project."'");
 	$count=mysqli_num_rows($query);
 	if ($count==0){
@@ -42,8 +42,8 @@ if (isset($_GET['id'])){
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('nombre_categoria');//Columnas de busqueda
-		 $sTable = "categorias";
+		 $aColumns = array('name_project');//Columnas de busqueda
+		 $sTable = "projects";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
 		{
@@ -55,7 +55,7 @@ if (isset($_GET['id'])){
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		$sWhere.=" order by nombre_categoria";
+		$sWhere.=" order by name_project";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -86,21 +86,21 @@ if (isset($_GET['id'])){
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
-						$id_categoria=$row['id_categoria'];
-						$nombre_categoria=$row['nombre_categoria'];
-						$descripcion_categoria=$row['descripcion_categoria'];
+						$id_project=$row['id_project'];
+						$name_project=$row['name_project'];
+						$descripcion_project=$row['descripcion_project'];
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
 					?>
 					<tr>
 						
-						<td><?php echo $nombre_categoria; ?></td>
-						<td ><?php echo $descripcion_categoria; ?></td>
+						<td><?php echo $name_project; ?></td>
+						<td ><?php echo $descripcion_project; ?></td>
 						<td><?php echo $date_added;?></td>
 						
 					<td class='text-right'>
-						<a href="#" class='btn btn-default' title='Editar categoría' data-nombre='<?php echo $nombre_categoria;?>' data-descripcion='<?php echo $descripcion_categoria?>' data-id='<?php echo $id_categoria;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar categoría' onclick="eliminar('<?php echo $id_categoria; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						<a href="#" class='btn btn-default' title='Editar categoría' data-name='<?php echo $name_project;?>' data-descripcion='<?php echo $descripcion_project?>' data-id='<?php echo $id_project;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
+						<a href="#" class='btn btn-default' title='Borrar categoría' onclick="eliminar('<?php echo $id_project; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
 					</tr>
