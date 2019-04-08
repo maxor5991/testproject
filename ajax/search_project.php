@@ -88,7 +88,7 @@ if (isset($_GET['id'])){
 				while ($row=mysqli_fetch_array($query)){
 						$id_project=$row['id_project'];
 						$name_project=$row['name_project'];
-						$descripcion_project=$row['descripcion_project'];
+						$descripcion_project=$row['des_proj'];
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
 					?>

@@ -1,33 +1,26 @@
 <?php
-	/*-------------------------
-	Autor: GSN
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
-	session_start();
-	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
-        header("location: login.php");
-		exit;
-        }
-	
-	/* Connect To Database*/
+session_start();
+if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
+	header("location: login.php");
+	exit;
+}
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+
 	$active_project="active";
 	$title="Proyectos | Simple Invoice";
 ?>
-		<?php include("head.php");?>
-		
-		<br>
-
-	
-    <div class="">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-		    <div class="btn-group pull-right">
-				<button type='button' class="btn btn-danger" data-toggle="modal" data-target="#nuevoCliente"><span class="glyphicon glyphicon-plus" ></span> Nuevo proyecto</button>
-			</div>
+<?php include("head.php");?>
+<br>
+<div class="">
+<div class="panel panel-default">
+<div class="panel-heading">
+<div class="btn-group pull-right">
+<button type='button' class="btn btn-danger" data-toggle="modal" data-target="#nuevoCliente">
+<span class="glyphicon glyphicon-plus" ></span>
+Nuevo proyecto
+</button>
+</div>
 			<h4><i class='glyphicon glyphicon-search'></i> Buscar Proyecto</h4>
 		</div>
 		<div class="panel-body">
