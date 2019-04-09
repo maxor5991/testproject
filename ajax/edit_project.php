@@ -2,7 +2,7 @@
 	include('is_logged.php');
 	if (empty($_POST['mod_id'])) {
            $errors[] = "ID vacío";
-        }else if (empty($_POST['mod_nombre'])) { 
+        }else if (empty($_POST['mod_nombre'])) {
            $errors[] = "Nombre vacío";
         }  else if (
 			!empty($_POST['mod_id']) &&
@@ -10,10 +10,11 @@
 		){
 		require_once ("../config/db.php");
 		require_once ("../config/conexion.php");
-		$mod_nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
-		$mod_descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_descripcion"],ENT_QUOTES)));	
-		$id_project=intval($_POST['mod_id']);
-		$sql="UPDATE projects SET name_project='".$mod_nombre."', des_proj='".$mod_descripcion."' WHERE id_project='".$id_project."'";
+		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
+		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_descripcion"],ENT_QUOTES)));
+		$date_end=mysqli_real_escape_string($con,(strip_tags($_POST["mod_fecha"],ENT_QUOTES)));		
+		$id_categoria=intval($_POST['mod_id']);
+		$sql="UPDATE projects SET name_project='".$nombre."',date_end='".$date_end."', des_proj='".$descripcion."' WHERE id_categoria='".$id_categoria."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Categoría ha sido actualizada satisfactoriamente.";

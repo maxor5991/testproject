@@ -88,7 +88,11 @@ if (isset($_GET['id'])){
 				while ($row=mysqli_fetch_array($query)){
 						$id_project=$row['id_project'];
 						$name_project=$row['name_project'];
+<<<<<<< HEAD
 						$des_project=$row['des_project'];
+=======
+						$descripcion_project=$row['descripcion_project'];
+>>>>>>> parent of c916fa0... Insercion de proyectos
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						$date_end= date('d/m/Y', strtotime($row['date_end']));
 						

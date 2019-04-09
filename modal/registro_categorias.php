@@ -27,7 +27,7 @@
 					<textarea class="form-control" id="descripcion" name="descripcion"   maxlength="255" ></textarea>
 				  
 				</div>
-			  </div> 
+			  </div>
 			  
 	 
 			 
