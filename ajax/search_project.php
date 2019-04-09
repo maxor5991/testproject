@@ -5,7 +5,7 @@ require_once ("../config/conexion.php");
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if (isset($_GET['id'])){
 	$id_project=intval($_GET['id']);
-	$query=mysqli_query($con, "select * from tasks where id_project='".$id_project."'");
+	$query=mysqli_query($con, "select * from projects where id_project='".$id_project."'");
 	$count=mysqli_num_rows($query);
 	if ($count==0){
 		if ($delete1=mysqli_query($con,"DELETE FROM projects WHERE id_project='".$id_project."'")){
@@ -31,7 +31,7 @@ if (isset($_GET['id'])){
 			?>
 			<div class="alert alert-danger alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Error!</strong> No se pudo eliminar éste proyecto. Existen tareas vinculadas a ésta proyecto. 
+			  <strong>Error!</strong> No se pudo eliminar ésta  categoría. Existen productos vinculados a ésta categoría. 
 			</div>
 			<?php
 		}
@@ -88,18 +88,20 @@ if (isset($_GET['id'])){
 				while ($row=mysqli_fetch_array($query)){
 						$id_project=$row['id_project'];
 						$name_project=$row['name_project'];
-						$descripcion_project=$row['des_proj'];
+						$des_project=$row['des_project'];
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
+						$date_end= date('d/m/Y', strtotime($row['date_end']));
 						
 					?>
 					<tr>
 						
 						<td><?php echo $name_project; ?></td>
-						<td ><?php echo $descripcion_project; ?></td>
+						<td ><?php echo $des_project; ?></td>
 						<td><?php echo $date_added;?></td>
+						<td><?php echo $date_end;?></td>
 						
 					<td class='text-right'>
-						<a href="#" class='btn btn-default' title='Editar categoría' data-name='<?php echo $name_project;?>' data-descripcion='<?php echo $descripcion_project?>' data-id='<?php echo $id_project;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
+						<a href="#" class='btn btn-default' title='Editar categoría' data-nombre='<?php echo $name_project;?>' data-descripcion='<?php echo $des_project?>' data-id='<?php echo $id_project;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 						<a href="#" class='btn btn-default' title='Borrar categoría' onclick="eliminar('<?php echo $id_project; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
