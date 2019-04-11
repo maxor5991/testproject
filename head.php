@@ -13,7 +13,6 @@
 
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom.css">
 	<link rel=icon href='img/logo-icon.png' sizes="32x32" type="image/png">
 
 </head>

@@ -1,17 +1,3 @@
-<script>
-    $(function(){
-
-$('.validanumericos').keypress(function(e) {
-  if(isNaN(this.value + String.fromCharCode(e.charCode))) 
-   return false;
-})
-.on("cut copy paste",function(e){
-  e.preventDefault();
-});
-
-});
-</script>
-
 <div class="footer">
             <div class="pull-right">
            <!--           10GB of <strong>250GB</strong> Free.-->

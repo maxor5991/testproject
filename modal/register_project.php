@@ -12,33 +12,30 @@
 	</div>
 	<div class="modal-body">
 	<form class="form-horizontal" method="post" id="save_project" name="save_project">
-	<div id="resultados_ajax"></div>
-	<div class="form-group">
-	<label for="name_project" class="col-sm-3 control-label">Nombre</label>
+	  <div id="resultados_ajax"></div>
+	    <div class="form-group">
+	      <label for="name_project" class="col-sm-3 control-label">Nombre</label>
 	<div class="col-sm-8">
 	<input type="text" class="form-control" id="name_project" name="name_project" required>
 	</div>
 	</div>
-			 
-				  
-			  <div class="form-group">
-				<label for="des_proj" class="col-sm-3 control-label">Descripción</label>
-				<div class="col-sm-8">
-					<textarea class="form-control" id="des_proj" name="des_proj"   maxlength="255" ></textarea>
-				  
-				</div>
-			  </div>
-			  <div class="form-group">
-	<label for="id_task" class="col-sm-3 control-label">Tarea</label>
+	<div class="form-group">
+	<label for="des_proj" class="col-sm-3 control-label">Descripción</label>
 	<div class="col-sm-8">
-	<input type="text" class="form-control" id="id_task" name="id_task" required>
-	</div>
-	</div><div class="form-group">
-	<label for="user_id" class="col-sm-3 control-label">Usuarios</label>
-	<div class="col-sm-8">
-	<input type="text" class="form-control" id="user_id" name="user_id" required>
+	<textarea class="form-control" id="des_proj" name="des_proj"   maxlength="255" ></textarea>
 	</div>
 	</div>
+	<div class="form-group">
+					<label for="id_task" class="col-sm-3 control-label">Tarea</label>
+					<div class="col-sm-8">
+					<input type="text" class="form-control" id="id_task" name="id_task" required>
+					</div>
+					</div><div class="form-group">
+					<label for="user_id" class="col-sm-3 control-label">Usuarios</label>
+					<div class="col-sm-8">
+					<input class="form-control" id="user_id" name="user_id" required>
+					</div>
+					</div>
 	 
 			 
 			 

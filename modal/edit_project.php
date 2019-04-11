@@ -11,34 +11,37 @@
 			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Editar proyecto</h4>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal" method="post" id="mod_id" name="mod_id">
+			<form class="form-horizontal" method="post" id="edit_project" name="edit_project">
 			<div id="resultados_ajax2"></div>
 			  <div class="form-group">
-				<label for="mod_nombre" class="col-sm-3 control-label">Nombre</label>
+				<label for="name_project2" class="col-sm-3 control-label">Nombre</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="mod_nombre" name="mod_nombre"  required>
-					<input type="hidden" name="mod_nombre" id="mod_nombre">
+				  <input type="text" class="form-control" id="name_project2" name="name_project2" placeholder="Nombre Proyecto" required>
+					<input type="hidden" id="mod_id" name="mod_id">
 				</div>
 			  </div>
-			   
-			  
-			 
 			  <div class="form-group">
-				<label for="mod_descripcion" class="col-sm-3 control-label">Descripción</label>
+				<label for="des_project2" class="col-sm-3 control-label">Descripción</label>
 				<div class="col-sm-8">
-				  <textarea class="form-control" id="mod_descripcion" name="mod_descripcion" ></textarea>
+				  <input type="text" class="form-control" id="des_project2" name="des_project2" placeholder="Descripción" required>
 				</div>
 			  </div>
-			  
-			 
-			 
-			 
-			 
-			
+			  <div class="form-group">
+				<label for="user_id2" class="col-sm-3 control-label">Usuarios</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="user_id2" name="user_id2" placeholder="Usuarios" required>
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="task_id2" class="col-sm-3 control-label">Tareas</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="task_id2" name="task_id2" placeholder="Tareas" required>
+				</div>
+			  </div>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-danger" id="actualizar_datos">Actualizar datos</button>
+			<button type="submit" class="btn btn-danger" id="guardar_datos">Guardar datos</button>
 		  </div>
 		  </form>
 		</div>
