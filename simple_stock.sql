@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2019 a las 19:55:49
+-- Tiempo de generación: 12-04-2019 a las 23:28:00
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -102,17 +102,33 @@ CREATE TABLE `projects` (
   `name_project` char(255) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_end` datetime NOT NULL,
-  `des_proj` text NOT NULL,
+  `des_project` text NOT NULL,
   `user_id` int(11) NOT NULL,
-  `id_task` int(11) NOT NULL
+  `task_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `projects`
 --
 
-INSERT INTO `projects` (`id_project`, `name_project`, `date_added`, `date_end`, `des_proj`, `user_id`, `id_task`) VALUES
-(1, 'Test', '2019-04-05 00:50:04', '2019-04-05 00:50:04', 'Test', 1, 1);
+INSERT INTO `projects` (`id_project`, `name_project`, `date_added`, `date_end`, `des_project`, `user_id`, `task_id`) VALUES
+(1, 'Test', '2019-04-05 00:50:04', '2019-04-05 00:50:04', 'Test', 1, 1),
+(2, '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', 1, 1),
+(3, '1', '2019-04-11 16:53:11', '2019-04-11 16:53:11', '1', 1, 1),
+(5, '4', '2019-04-11 21:11:07', '2019-04-11 21:11:07', '4', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `quotations`
+--
+
+CREATE TABLE `quotations` (
+  `id_quotation` int(11) NOT NULL,
+  `det_head_quotation` int(11) NOT NULL,
+  `det_body_quotation` int(11) NOT NULL,
+  `date_quotation` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -121,7 +137,7 @@ INSERT INTO `projects` (`id_project`, `name_project`, `date_added`, `date_end`, 
 --
 
 CREATE TABLE `tasks` (
-  `id_task` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
   `name_task` char(255) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_end` datetime NOT NULL,
@@ -133,7 +149,7 @@ CREATE TABLE `tasks` (
 -- Volcado de datos para la tabla `tasks`
 --
 
-INSERT INTO `tasks` (`id_task`, `name_task`, `date_added`, `date_end`, `id_project`, `user_id`) VALUES
+INSERT INTO `tasks` (`task_id`, `name_task`, `date_added`, `date_end`, `id_project`, `user_id`) VALUES
 (1, 'Test', '2019-04-05 00:50:04', '2019-04-05 00:50:04', 1, 1);
 
 -- --------------------------------------------------------
@@ -190,13 +206,19 @@ ALTER TABLE `products`
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`id_project`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `id_task` (`id_task`);
+  ADD KEY `id_task` (`task_id`);
+
+--
+-- Indices de la tabla `quotations`
+--
+ALTER TABLE `quotations`
+  ADD PRIMARY KEY (`id_quotation`);
 
 --
 -- Indices de la tabla `tasks`
 --
 ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`id_task`);
+  ADD PRIMARY KEY (`task_id`);
 
 --
 -- Indices de la tabla `users`
@@ -232,7 +254,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `quotations`
+--
+ALTER TABLE `quotations`
+  MODIFY `id_quotation` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -255,7 +283,7 @@ ALTER TABLE `historial`
 --
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id_task`);
+  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
